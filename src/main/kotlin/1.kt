@@ -21,6 +21,7 @@ fun calc2Prod(lineList: List<Int>, sum: Int): Int {
 }
 
 fun calc3Prod(lineList: List<Int>, sum: Int): Int {
+    lineList.sorted()
     for (i in lineList) {
         for (j in lineList) {
             if (lineList.contains(sum - i - j)) {
