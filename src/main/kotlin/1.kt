@@ -1,27 +1,24 @@
 import java.io.File
 import java.io.BufferedReader
+import java.util.*
+import kotlin.collections.HashSet
 
-fun loader(fileName: String): List<Int> {
-    val numList = mutableListOf<Int>()
+fun loader(fileName: String): TreeSet<Int> {
+    val numList:TreeSet<Int> = TreeSet()
     File(fileName).useLines { lines -> lines.forEach { numList.add(it.toInt()) }}
     return numList
 }
 
-fun calc2Prod(lineList: List<Int>, sum: Int): Int {
-    val done: MutableSet<Int> = mutableSetOf()
+fun calc2Prod(lineList: TreeSet<Int>, sum: Int): Int {
     for (num in lineList) {
-        val second: Int = sum - num
-        if (done.contains(second)) {
-            return num*second
-        } else {
-            done.add(num)
+        if (lineList.contains(sum - num)) {
+            return (num * (sum - num))
         }
     }
     return 0
 }
 
-fun calc3Prod(lineList: List<Int>, sum: Int): Int {
-    lineList.sorted()
+fun calc3Prod(lineList: TreeSet<Int>, sum: Int): Int {
     for (i in lineList) {
         for (j in lineList) {
             if (lineList.contains(sum - i - j)) {

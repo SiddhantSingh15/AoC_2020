@@ -1,20 +1,22 @@
+import java.util.*
+import kotlin.collections.HashSet
 import kotlin.system.measureNanoTime
 
-fun timer1(nList: List<Int>, sum: Int, runs: Int) {
-    val timeList: MutableList<Long> = mutableListOf()
+fun timer1(nList: TreeSet<Int>, sum: Int, runs: Int) {
+    var timeList: Long = 0
     for (i in 1..runs) {
-        timeList.add(measureNanoTime { calc2Prod(nList, sum) })
+        timeList += (measureNanoTime { calc2Prod(nList, sum) }) / 1000
     }
-    val average: Double = timeList.map { it / 1000 }.average()
+    val average: Long = timeList / runs
     println("Average time taken for $runs runs: $average µs")
 }
 
-fun timer2(nList: List<Int>, sum: Int, runs: Int) {
-    val timeList: MutableList<Long> = mutableListOf()
+fun timer2(nList: TreeSet<Int>, sum: Int, runs: Int) {
+    var timeList: Long = 0
     for (i in 1..runs) {
-        timeList.add(measureNanoTime { calc3Prod(nList, sum) })
+        timeList += (measureNanoTime { calc3Prod(nList, sum) }) / 1000
     }
-    val average: Double = timeList.map { it / 1000 }.average()
+    val average: Long = timeList / runs
     println("Average time taken for $runs runs: $average µs")
 }
 
@@ -25,9 +27,9 @@ fun main() {
     val year = 2020
 
     println(calc2Prod(numList, year))
-    timer1(numList, year, 100)
+    timer1(numList, year, 1000000)
 
     println(calc3Prod(numList, year))
-    timer2(numList, year, 100)
+    timer2(numList, year, 1000000)
 
 }
