@@ -1,11 +1,8 @@
 import java.io.File
-import java.io.BufferedReader
-import java.util.LinkedHashSet
 import java.util.*
-import kotlin.collections.HashSet
 
-fun loader(fileName: String): TreeSet<Int> {
-    val numList:TreeSet<Int> = TreeSet()
+fun loader1(fileName: String): TreeSet<Int> {
+    val numList: TreeSet<Int> = TreeSet()
     File(fileName).useLines { lines -> lines.forEach { numList.add(it.toInt()) }}
     return numList
 }

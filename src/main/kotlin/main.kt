@@ -1,34 +1,19 @@
-import java.util.*
-import kotlin.system.measureNanoTime
-
-fun timer1(nList: TreeSet<Int>, sum: Int, runs: Int) {
-    var timeList = 0.0
-    for (i in 1..runs) {
-        timeList += (measureNanoTime { calc2Prod(nList, sum) }).toDouble() / 1000
-    }
-    val average: Double = (timeList / runs)
-    println("Average time taken for $runs runs: $average nanoseconds")
-}
-
-fun timer2(nList: TreeSet<Int>, sum: Int, runs: Int) {
-    var timeList = 0.0
-    for (i in 1..runs) {
-        timeList += (measureNanoTime { calc3Prod(nList, sum) }).toDouble() / 1000
-    }
-    val average: Double = timeList / runs
-    println("Average time taken for $runs runs: $average nanoseconds")
-}
-
+val numList = loader1("1.txt")
+val passList = loader2("2.txt")
 
 fun main() {
-    val numList = loader("1.txt")
-
     val year = 2020
 
-    println(calc2Prod(numList, year))
+    println("Day 1, part 1: " + calc2Prod(numList, year))
     timer1(numList, year, 10000)
 
-    println(calc3Prod(numList, year))
+    println("Day 1, part 2: " + calc3Prod(numList, year))
     timer2(numList, year, 10000)
+
+    println("Day 2, part 1: " + validator(passList))
+    timer3(passList, 10000)
+
+    println("Day 2, part 2: " + validator2(passList))
+    timer4(passList, 10000)
 
 }
