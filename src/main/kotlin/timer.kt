@@ -54,3 +54,21 @@ fun timer6(mapList:  MutableList<MutableList<String>>, runs: Int) {
     val average: Double = timeList / runs
     println("  - Average time taken for $runs runs: $average µs")
 }
+
+fun timer7(passList:  List<Map<String, String>>, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { validator(passList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
+
+fun timer8(passList:  List<Map<String, String>>, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { validator2(passList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
