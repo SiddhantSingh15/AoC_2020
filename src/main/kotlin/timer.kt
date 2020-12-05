@@ -72,3 +72,21 @@ fun timer8(passList:  List<Map<String, String>>, runs: Int) {
     val average: Double = timeList / runs
     println("  - Average time taken for $runs runs: $average µs")
 }
+
+fun timer9(boardList:  IntArray, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { part1(boardList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
+
+fun timer10(boardList:  IntArray, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { part2(boardList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
