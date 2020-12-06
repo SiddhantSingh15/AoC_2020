@@ -90,3 +90,21 @@ fun timer10(boardList:  IntArray, runs: Int) {
     val average: Double = timeList / runs
     println("  - Average time taken for $runs runs: $average µs")
 }
+
+fun timer11(customList:  List<String>, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { part1(customList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
+
+fun timer12(customList:  List<String>, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { part2(customList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
