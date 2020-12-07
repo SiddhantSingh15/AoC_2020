@@ -108,3 +108,21 @@ fun timer12(customList:  List<String>, runs: Int) {
     val average: Double = timeList / runs
     println("  - Average time taken for $runs runs: $average µs")
 }
+
+fun timer13(bagList:  TreeSet<String>, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { gold1(bagList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
+
+fun timer14(bagList:  TreeSet<String>, runs: Int) {
+    var timeList = 0.0
+    for (i in 1..runs) {
+        timeList += (measureNanoTime { gold2(bagList) }).toDouble() / 1000
+    }
+    val average: Double = timeList / runs
+    println("  - Average time taken for $runs runs: $average µs")
+}
